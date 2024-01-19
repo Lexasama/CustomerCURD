@@ -1,7 +1,9 @@
-﻿using Customer.Domain.Services;
+﻿using Customer.Domain.Models;
+using Customer.Domain.Services;
 using Customer.Web.Api.Abstractions;
-using Customer.Web.Api.Resources;
 using Customer.Web.Api.ViewModels.Customers;
+using Customer.Web.Shared.Resources;
+using Customer.Web.Shared.ViewModels.Customers;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Customer.Web.Api.Controllers;
@@ -74,7 +76,7 @@ public class CustomerController : BaseController
         return NoContent();
     }
 
-    private CustomerResource CreateResource(Domain.Models.CustomerDomain customerDomain)
+    private CustomerResource CreateResource( CustomerDomain customerDomain)
     {
         var resource = CustomerResource.From(customerDomain);
         resource.Links.Add(_linkService.Generate(
